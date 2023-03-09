@@ -8,27 +8,18 @@ import Section from 'components/Section';
 import Container from 'components/Container';
 import PostCard from 'components/PostCard';
 import Pagination from 'components/Pagination';
-import { categoryPathBySlug } from 'lib/categories';
-import Link from 'next/link';
 
 import styles from 'styles/pages/Home.module.scss';
 
-import { ApolloClient } from '@apollo/client';
-
 export default function Home({ posts, pagination }) {
-  const { metadata = {}, recentPosts = [], categories = [] } = useSite();
+  const { metadata = {} } = useSite();
   const { title, description } = metadata;
-  const hasRecentCategories = Array.isArray(categories) && categories.length > 0;
 
   return (
     <Layout>
       <WebsiteJsonLd siteTitle={title} />
       <Header>
-        <h1
-          dangerouslySetInnerHTML={{
-            __html: title,
-          }}
-        />
+        <h1>services</h1>
 
         <p
           className={styles.description}
@@ -40,28 +31,8 @@ export default function Home({ posts, pagination }) {
 
       <Section>
         <Container>
-          <h2 className="sr-only">Posts</h2>
-          <ul className={styles.posts}>
-            {posts.map((post) => {
-              return (
-                <li key={post.slug}>
-                  <PostCard post={post} />
-                </li>
-              );
-            })}
-          </ul>
-          <ul className={styles.footerMenuItems}>
-            {categories.map((category) => {
-              const { id, slug, name } = category;
-              return (
-                <li key={id}>
-                  <Link href={categoryPathBySlug(slug)}>
-                    <a>{name}</a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <h2 className="sr-only">This is the services pages</h2>
+
           {pagination && (
             <Pagination
               addCanonical={false}

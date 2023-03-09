@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
 @import "styles/settings/__settings";
 @import "style.css";
 
@@ -31,6 +35,7 @@ img {
 }
 
 input {
+
   &[type="text"],
   &[type="search"],
   &[type="email"] {
